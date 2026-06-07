@@ -1,53 +1,52 @@
 import React from 'react';
+import './StarBorder.css';
 
-interface StarBorderProps {
-  as?: React.ElementType;
+type StarBorderProps<T extends React.ElementType> = React.ComponentPropsWithoutRef<T> & {
+  as?: T;
   className?: string;
   children?: React.ReactNode;
   color?: string;
-  speed?: string;
-  [key: string]: any;
-}
+  speed?: React.CSSProperties['animationDuration'];
+  thickness?: number;
+};
 
-const StarBorder: React.FC<StarBorderProps> = React.memo(({
-  as: Component = 'div',
+const StarBorder = <T extends React.ElementType = 'button'>({
+  as,
   className = '',
-  color = '#4285F4',
+  color = 'white',
   speed = '6s',
+  thickness = 1,
   children,
   ...rest
-}) => {
-  const Tag = Component as any;
+}: StarBorderProps<T>) => {
+  const Component = as || 'button';
+
   return (
-    <div className="relative">
-      {/* Border layer — overflow-hidden clips the spinning gradient */}
-      <div className="absolute inset-0 rounded-2xl sm:rounded-3xl p-[1.5px] overflow-hidden pointer-events-none z-0" style={{ contain: 'strict' }}>
-        <div
-          className="spin-border absolute inset-[-50%]"
-          style={{
-            background: `conic-gradient(from 0deg, transparent 0%, ${color} 12%, transparent 25%, transparent 50%, ${color} 62%, transparent 75%)`,
-            animationDuration: speed,
-          }}
-        />
-        <div
-          className="spin-border-glow absolute inset-[-50%] opacity-50"
-          style={{
-            background: `conic-gradient(from 180deg, transparent 0%, ${color} 12%, transparent 25%, transparent 50%, ${color} 62%, transparent 75%)`,
-            animationDuration: speed,
-          }}
-        />
-      </div>
-
-      {/* Content area — NO overflow-hidden, dropdowns can escape */}
-      <Tag
-        className={`relative z-[1] rounded-2xl sm:rounded-3xl bg-[#1e1f20] ${className}`}
-        {...rest}
-      >
-        {children}
-      </Tag>
-    </div>
+    <Component
+      className={`star-border-container ${className}`}
+      {...(rest as any)}
+      style={{
+        padding: `${thickness}px 0`,
+        ...(rest as any).style
+      }}
+    >
+      <div
+        className="border-gradient-bottom"
+        style={{
+          background: `radial-gradient(circle, ${color}, transparent 10%)`,
+          animationDuration: speed
+        }}
+      ></div>
+      <div
+        className="border-gradient-top"
+        style={{
+          background: `radial-gradient(circle, ${color}, transparent 10%)`,
+          animationDuration: speed
+        }}
+      ></div>
+      <div className="inner-content">{children}</div>
+    </Component>
   );
-});
+};
 
-StarBorder.displayName = 'StarBorder';
 export default StarBorder;

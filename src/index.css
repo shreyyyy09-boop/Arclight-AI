@@ -53,60 +53,6 @@ html, body, #root {
   50% { box-shadow: 0 0 0 8px rgba(59, 130, 246, 0); }
 }
 
-@keyframes border-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes gradient-shift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-
-/* ── Spinning border elements ── */
-.spin-border {
-  animation-name: border-spin;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-duration: 6s;
-  will-change: transform;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  transform-origin: center center;
-}
-
-.spin-border-glow {
-  animation-name: border-spin;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-duration: 6s;
-  will-change: transform;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  transform-origin: center center;
-  filter: blur(8px);
-}
-
-/* ── Gradient text ── */
-.gradient-text-animated {
-  background-size: 200% auto;
-  animation-name: gradient-shift;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-duration: 8s;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.gradient-border-animated {
-  background-size: 200% auto;
-  animation-name: gradient-shift;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-duration: 8s;
-}
-
 /* ── GPU acceleration for animated elements ── */
 .gpu-accelerated {
   will-change: transform;
