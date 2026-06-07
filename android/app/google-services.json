@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "937181559644",
+    "project_id": "arclight-ai",
+    "storage_bucket": "arclight-ai.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:937181559644:android:e3f408c4a65a820b051f99",
+        "android_client_info": {
+          "package_name": "com.Arclight.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "937181559644-rlsl0c7l0vqinurej9snc2les6bi7f3k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.Arclight.app",
+            "certificate_hash": "da40f7f4a571432971f5fcb0faa9cc42ed4e6863"
+          }
+        },
+        {
+          "client_id": "937181559644-1kh67p7ncts5kg5aubvcp6f4qa44g5qi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-Fh1-ChPKNj2z803_E778FqAAWROKaSg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "937181559644-1kh67p7ncts5kg5aubvcp6f4qa44g5qi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

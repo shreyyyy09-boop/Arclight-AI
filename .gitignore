@@ -1,0 +1,23 @@
+node_modules/
+build/
+dist/
+release/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+
+# Android/Capacitor build artifacts
+android/.gradle/
+android/app/build/
+android/build/
+android/capacitor-cordova-android-plugins/build/
+android/local.properties
+
+# IDE
+.idea/
+.vscode/
+
+# Electron
+electron-dist/
