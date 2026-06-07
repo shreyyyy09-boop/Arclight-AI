@@ -8,31 +8,6 @@ interface GradientTextProps {
   className?: string;
 }
 
-// Inject keyframes once globally
-const GRADIENT_STYLE_ID = "gradient-text-keyframes";
-if (typeof document !== 'undefined' && !document.getElementById(GRADIENT_STYLE_ID)) {
-  const s = document.createElement('style');
-  s.id = GRADIENT_STYLE_ID;
-  s.textContent = `
-    @keyframes gradient-shift {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-    }
-    .gradient-text-animated {
-      background-size: 200% auto;
-      animation: gradient-shift linear infinite;
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .gradient-border-animated {
-      background-size: 200% auto;
-      animation: gradient-shift linear infinite;
-    }
-  `;
-  document.head.appendChild(s);
-}
-
 const GradientText = React.memo(function GradientText({
   children,
   colors = ["#5227FF", "#1d0039", "#B497CF"],
@@ -40,7 +15,7 @@ const GradientText = React.memo(function GradientText({
   showBorder = false,
   className = "",
 }: GradientTextProps) {
-  const gradientStyle = {
+  const gradientStyle: React.CSSProperties = {
     backgroundImage: `linear-gradient(to right, ${colors.join(", ")})`,
     animationDuration: `${animationSpeed}s`,
   };

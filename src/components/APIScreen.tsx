@@ -60,21 +60,18 @@ export default function APIScreen({ onSubmit }: APIScreenProps) {
         transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
         className="z-10 w-full max-w-md"
       >
-        <div className="relative rounded-2xl p-[1.5px] overflow-hidden">
+        <div className="relative rounded-2xl p-[1.5px] overflow-hidden" style={{ contain: 'strict' }}>
           {/* Animated border */}
           <div
-            className="absolute inset-[-100%] z-0"
+            className="spin-border absolute inset-[-50%] z-0"
             style={{
               background: `conic-gradient(from 0deg, transparent 0%, #4285F4 12%, transparent 25%, transparent 50%, #4285F4 62%, transparent 75%)`,
-              animation: 'api-spin 6s linear infinite',
             }}
           />
           <div
-            className="absolute inset-[-100%] z-0 opacity-40"
+            className="spin-border-glow absolute inset-[-50%] z-0 opacity-40"
             style={{
               background: `conic-gradient(from 180deg, transparent 0%, #4285F4 12%, transparent 25%, transparent 50%, #4285F4 62%, transparent 75%)`,
-              animation: 'api-spin 6s linear infinite',
-              filter: 'blur(8px)',
             }}
           />
 
@@ -200,13 +197,6 @@ export default function APIScreen({ onSubmit }: APIScreenProps) {
           </div>
         </div>
       </motion.div>
-
-      <style>{`
-        @keyframes api-spin {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-      `}</style>
     </div>
   );
 }
